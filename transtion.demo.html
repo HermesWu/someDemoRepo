@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+<style  >
+.card {
+  background: #eee;
+}
+
+.card-footer-item.is-active {
+  background: #00d1b2;
+  color: #fff;
+}
+
+.demo {
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  position: relative;
+  margin: 30px auto;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform ease 1s;
+}
+.cube.show-default {
+  transform: translateZ(-150px) rotateY(-15deg) rotateX(-15deg);
+}
+.cube.show-front {
+  transform: translateZ(-150px);
+}
+.cube.show-back {
+  transform: translateZ(-150px) rotateX(-180deg);
+}
+.cube.show-right {
+  transform: translateZ(-150px) rotateY(-90deg);
+}
+.cube.show-left {
+  transform: translateZ(-150px) rotateY(90deg);
+}
+.cube.show-top {
+  transform: translateZ(-150px) rotateX(-90deg);
+}
+.cube.show-bottom {
+  transform: translateZ(-150px) rotateX(90deg);
+}
+.cube-face {
+  border: 2px solid #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0.9;
+  backface-visibility: visible;
+}
+.cube-face.is-front {
+  transform: translateZ(150px);
+}
+.cube-face.is-back {
+  transform: rotateX(-180deg) translateZ(150px);
+}
+.cube-face.is-right {
+  transform: rotateY(90deg) translateZ(150px);
+}
+.cube-face.is-left {
+  transform: rotateY(-90deg) translateZ(150px);
+}
+.cube-face.is-top {
+  transform: rotateX(90deg) translateZ(150px);
+}
+.cube-face.is-bottom {
+  transform: rotateX(-90deg) translateZ(150px);
+}
+.cube img {
+  width: 100%;
+}
+
+</style>
+<body>
+	<div id="app">
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          {{title}}
+        </a>
+
+        <div class="navbar-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">{{ demoTitle }}</p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <div class="demo">
+              <div class="cube" :class="fullDir">
+                <div class="cube-face is-front"><img src="https://rawcdn.githack.com/o2team/misc/gh-pages/o2/img/mms/s1/1.jpg" alt="pic1"/></div>
+                <div class="cube-face is-back"><img src="https://rawcdn.githack.com/o2team/misc/gh-pages/o2/img/mms/s1/2.jpg" alt="pic2"/></div>
+                <div class="cube-face is-right"><img src="https://rawcdn.githack.com/o2team/misc/gh-pages/o2/img/mms/s1/3.jpg" alt="pic3"/></div>
+                <div class="cube-face is-left"><img src="https://rawcdn.githack.com/o2team/misc/gh-pages/o2/img/mms/s1/4.jpg" alt="pic4"/></div>
+                <div class="cube-face is-top"><img src="https://rawcdn.githack.com/o2team/misc/gh-pages/o2/img/mms/s1/5.jpg" alt="pic5"/></div>
+                <div class="cube-face is-bottom"><img src="https://rawcdn.githack.com/o2team/misc/gh-pages/o2/img/mms/s1/6.jpg" alt="pic6"/></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a class="card-footer-item" @click="runDemo('default')" :class="{'is-active': isActive('default')}">默认</a>
+          <a class="card-footer-item" @click="runDemo('front')" :class="{'is-active': isActive('front')}">前面</a>
+          <a class="card-footer-item" @click="runDemo('back')" :class="{'is-active': isActive('back')}">后面</a>
+          <a class="card-footer-item" @click="runDemo('left')" :class="{'is-active': isActive('left')}">左面</a>
+          <a class="card-footer-item" @click="runDemo('right')" :class="{'is-active': isActive('right')}">右面</a>
+          <a class="card-footer-item" @click="runDemo('top')" :class="{'is-active': isActive('top')}">上面</a>
+          <a class="card-footer-item" @click="runDemo('bottom')" :class="{'is-active': isActive('bottom')}">下面</a>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+	
+	new Vue({
+  el: '#app',
+  data: {
+    title: 'Web UI Development Handbook',
+    demoTitle: "CSS3 Transition 3D Demo",
+    dir: 'default'
+  },
+  computed: {
+    fullDir () {
+      return `show-${this.dir}`
+    }
+  },
+  methods: {
+    runDemo (dir) {
+      this.dir = dir;
+    },
+    isActive (dir) {
+      return dir === this.dir;
+    }
+  }
+})
+</script>
+</body>
+</html>
