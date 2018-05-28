@@ -144,7 +144,12 @@ window.jQuery = function (nodeOrSelector) {
 }
 var node2 = jQuery('ul > li')
 node2.addClass('blue')
+var temp = document.querySelectorAll('li')
+jQuery(temp[]).addClass(['red'])
+
 node2.text()
+// jQuery 是一个函数，（）；node2，函数返回值，找return。nodes是个对象。调用dom api
+// 其实，node2就是一个hash(对象)，{0: li, 1: li, length: 5, addClass: f, text: f}
 //直接操作nodes，返回就可以，可以使用闭包操作node2，或者使用数组访问里面的元素
 //node2[0]就是第一个li
 node2[0].classList.add('blue')

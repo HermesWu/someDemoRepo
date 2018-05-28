@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <title>彩虹</title>
+  <style>
+    *{margin:0;padding:0}
+.red.active {
+  background: red;
+}
+.orange.active{
+  background: orange;
+}
+.yellow.active{
+  background: yellow;
+}
+.green.active{
+  background: green; 
+}
+.blue.active{
+  background: blue;
+}
+.ingido.active {
+  background: indigo;
+}
+.violet.active{
+  background: violet;
+}
+.white{
+  background: white;
+  border: 1px solid black;
+}
+div{
+  padding: 10px;
+  
+  box-sizing: border-box;
+  transition: all 1s;
+  display: flex;
+  flex: 1;
+  border-radius: 50%;
+}
+.red{
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+  </style>
+</head>
+<body>
+<div class="red">
+  <div class="orange">
+    <div class="yellow">
+      <div class="green">
+        <div class="blue">
+          <div class="ingido">
+            <div class="violet">
+              <div class="white"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var n = 0 //定时器
+  $('div').on('click', function(e){
+    setTimeout(function(){
+      $(e.currentTarget).addClass('active')
+    }, n*500)
+    n +=1
+  })
+</script>
+</body>
+</html>
