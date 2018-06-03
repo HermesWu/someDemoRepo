@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>苹果风格轮播</title>
+	<style>
+	*{
+		box-sizing: border-box;
+	}
+	.wrapper{
+		width: 920px;
+		margin: 20px auto;
+		overflow: hidden;
+		
+	}
+	.slides{
+		display: flex;
+		transition: all .3s;
+	}
+	span{
+		display: flex;
+		width: 60px;
+		height: 35px;
+		border:1px solid rgba(0,0,0,.2);
+		justify-content: center;
+	}
+		img.small{
+			width:32px;
+			height:32px;
+			
+		}
+		img.big{
+			
+			/*border:1px solid black;*/
+			/*box-shadow: 0 0  10px rgba(0, 0, 0)*/
+		}
+		span{
+			 
+			position: relative;
+		}
+		.clicked::before{
+			content:'';
+			position: absolute;
+			top: 0;
+			left: 40%;
+			/*display: block;*/
+			border:6px solid transparent;
+			border-top-color:  gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="slides">
+			<img class='big' src='http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/macbook.jpg'>
+			<img class='big' src='http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/iphone.jpg'>
+			<img class='big' src='http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/imac.jpg'>
+			<img class='big' src='http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/info.jpg'>
+		</div>
+	</div>
+	<div class="w2" style=" display:flex; justify-content: center;
+			position: relative;">
+		<span class="clicked">
+		<img class='small' src='http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/thumb_macbook.png'>
+		</span>
+		<span>
+		<img class='small' src='http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/thumb_iphone.png'>
+		</span>
+		<span>
+		<img class='small' src='http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/thumb_imac.png'>
+		</span>
+		<span>
+		<img class='small' src='http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/thumb_about.png'>
+	</span>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		let n=0
+		setTimer()
+		function setTimer() {
+	return setInterval(() => {
+		n += 1
+		playSlide(n % 4)
+	}, 1000)
+}
+function playSlide(index) {
+	$('.w2>span').eq(index).trigger('click')
+}
+		$('.w2').on('click','span',(e)=>{
+			let index = $(e.currentTarget).index()
+			n=index
+			$('.w2>span').eq(index).addClass('clicked')
+				.siblings().removeClass('clicked')
+			console.log(index)
+			$('.slides').css({
+				transform:`translateX( ${-(index) *920}px)`
+			})
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击浮层</title>
+	<style>
+		.wrapper{
+			display:inline-block;
+			position: relative;
+		}
+		.box{
+			display: none;
+			width:200px;
+			height:200px;
+			border: 1px solid red;
+			position: absolute;
+			left:100%;
+			top:0;
+			margin-left: 15px;
+			padding:10px;
+		}
+		.box::before{
+			content:'';
+			position: absolute;
+			top: 0;
+			right: 100%;
+			/*display: block;*/
+			border:15px solid transparent;
+			border-right-color:  red;
+		}
+		.box::after{
+			content:'';
+			position: absolute;
+			top: 0;
+			right: 100%;
+			/*display: block;*/
+			margin-left:-1px;
+			border:15px solid transparent;
+			border-right-color: white; }
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<a class="clickMe">点我出浮层</a>
+		<div class="box">
+			<input type="checkbox" value="hi">
+		</div>
+	</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$('.clickMe').on('click',(e)=>{
+		$('.box').toggle()
+		$(document).one('click',()=>{
+		$('.box').css({display:'none'})
+	})
+	})
+	$('.wrapper').on('click',(e)=>{
+
+		e.stopPropagation()
+	})
+	
+
+</script>
+</html>

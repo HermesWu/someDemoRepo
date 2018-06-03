@@ -4,12 +4,20 @@
 let $buttons = $('#buttonWrapper>button')
 let $slides = $('#slides')
 let $images = $slides.children('img')
-let $firstCopy = $images.eq(0).clone(true)
-let $lastCopy = $images.eq($images.length-1).clone(true)
 let current = 0
-$slides.append($firstCopy)
-$slides.prepend($lastCopy)
+
+makeFakeSlides()
 $slides.css({transform:'translateX(-400px)'})
+
+
+function makeFakeSlides() {
+	let $firstCopy = $images.eq(0).clone(true)
+	let $lastCopy = $images.eq($images.length-1).clone(true)
+	$slides.append($firstCopy)
+	$slides.prepend($lastCopy)
+}
+
+
 $buttons.eq(0).on('click', function(){
 	if(current ===2){
 		console.log('从zuihou张到最后一张')
