@@ -30,16 +30,16 @@ var server = http.createServer(function(request, response){
     response.write(string)
     response.end()
     }else if(path ==='/pay'){
-      var amount = fs.readFileSync('./db', 'utf8')
+      var amount = fs.readFileSync('./db', 'utf8') //读取数据库
       var newamount = amount - 1
-      fs.writeFileSync('./db',newamount)
+      fs.writeFileSync('./db',newamount)//写入数据库
       response.statusCode = 200
       response.setHeader('Content-Type', 'application/javascript')
       response.write(`
       //说明 jack.com的后端需要对frank.com的页面细节了解很清楚
       //耦合 解耦
       //  amount.innerText = amount.innerText -1
-      ${query.callback}.call(undefined,'success')
+      ${query.callback}.call(undefined,'success') //取callback函数名
        `)
       response.end()
     }else if(path === '/style.css') {

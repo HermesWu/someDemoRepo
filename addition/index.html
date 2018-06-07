@@ -39,7 +39,7 @@
 <script>
 	clickMe.addEventListener('click', (e)=>{
 		let script = document.createElement('script')
-		let functionName = 'frank'+ parseInt(Math.random()*100000, 10)
+		let functionName = 'frank'+ parseInt(Math.random()*100000, 10) //生成随机数
 		window[functionName] = function(result){
 			if(result === 'success'){
 			 amount.innerText = amount.innerText -1 
@@ -47,11 +47,11 @@
 			alert('请求失败')
 			}
 		}
-		script.src="http://srdev.izuche.com:8002/pay?callback="+functionName
+		script.src="http://srdev.izuche.com:8002/pay?callback="+functionName //请求callback参数
 		document.body.appendChild(script)
 		script.onload=(e)=>{
 			e.currentTarget.remove()
-			delete window[functionName]
+			delete window[functionName] //删除函数
 		}
 		script.onerror = (e) => {
 			alert('fail')
