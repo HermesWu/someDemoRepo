@@ -3,14 +3,62 @@
 <head>
 	<meta charset="UTF-8">
 	<title>数据库做加法</title>
+	<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-	<div>你当前的余额为<span id="amount">&&&amount&&&</span></div>
-	<!-- <button id="clickMe">打钱</button> -->
-	<form action="/pay" method="post">
+	<div class="hi">你当前的余额为<span id="amount">&&&amount&&&</span></div>
+	<button id="clickMe">打钱</button>
+
+	<!-- ①下面是上古时期前后端配合方式，用form和submit -->
+	
+	<!-- <form action="/pay" method="post" target="result">
 		<input type="submit" value="付款">
 	</form>
+	<iframe	name="result" src="about:blank" frameborder="0" height=200>
+
+	</iframe> -->
+	<!-- 上古方法end -->
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- ②这是图片请求的 -->
+<!-- <script>
+	clickMe.addEventListener('click', (e)=>{
+		let images = document.createElement('img')
+		images.src="/pay"
+		images.onload = ()=>{
+			amount.innerText = amount.innerText -1
+			alert('打钱成功！')
+		}
+		images.onerror = ()=>{
+			alert('打钱失败！')
+		}
+	}) -->
 
+<!-- ③这是script请求的 -->
+<script>
+	clickMe.addEventListener('click', (e)=>{
+		let script = document.createElement('script')
+		let functionName = 'frank'+ parseInt(Math.random()*100000, 10)
+		window[functionName] = function(result){
+			if(result === 'success'){
+			 amount.innerText = amount.innerText -1 
+			}else{
+			alert('请求失败')
+			}
+		}
+		script.src="http://srdev.izuche.com:8002/pay?callback="+functionName
+		document.body.appendChild(script)
+		script.onload=(e)=>{
+			e.currentTarget.remove()
+			delete window[functionName]
+		}
+		script.onerror = (e) => {
+			alert('fail')
+			e.currentTarget.remove()
+			delete window[functionName]
+		}
+	})
+</script>
+</script>
 </html>

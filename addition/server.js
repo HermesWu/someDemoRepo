@@ -29,14 +29,20 @@ var server = http.createServer(function(request, response){
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
     response.write(string)
     response.end()
-  }else if(path ==='/pay'){
-    var amount = fs.readFileSync('./db', 'utf8')
-    var newamount = amount - 1
-    fs.writeFileSync('./db',newamount)
-    response.statusCode = 200
-    response.write('success')
-    response.end()
-  }else if(path === '/style.css') {
+    }else if(path ==='/pay'){
+      var amount = fs.readFileSync('./db', 'utf8')
+      var newamount = amount - 1
+      fs.writeFileSync('./db',newamount)
+      response.statusCode = 200
+      response.setHeader('Content-Type', 'application/javascript')
+      response.write(`
+      //说明 jack.com的后端需要对frank.com的页面细节了解很清楚
+      //耦合 解耦
+      //  amount.innerText = amount.innerText -1
+      ${query.callback}.call(undefined,'success')
+       `)
+      response.end()
+    }else if(path === '/style.css') {
     response.statusCode = 200
     var string = fs.readFileSync('./style.css', 'utf8')
     response.setHeader('Content-Type', 'text/css')
