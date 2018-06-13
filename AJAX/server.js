@@ -22,10 +22,8 @@ var server = http.createServer(function(request, response){
   console.log('清风大侠说：含查询字符串的路径\n' + pathWithQuery)
 
   if(path === '/'){
+    let string = fs.readFileSync('./index.html','utf8')
     response.statusCode = 200
-    var string = fs.readFileSync('./index.html','utf8')
-    var amount = fs.readFileSync('./db','utf8')
-    string = string.replace('&&&amount&&&', amount)
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
     response.write(string)
     response.end()
@@ -43,22 +41,38 @@ var server = http.createServer(function(request, response){
        `)
       response.end()
     }else if(path === '/style.css') {
-    response.statusCode = 200
     var string = fs.readFileSync('./style.css', 'utf8')
-    response.setHeader('Content-Type', 'text/css')
+    response.statusCode = 200
+    response.setHeader('Content-Type', 'text/css；charset=utf-8')
     response.write(string)
     response.end()
   }else if(path === '/main.js') {
-    response.statusCode = 200
     var string = fs.readFileSync('./main.js', 'utf8')
-    response.setHeader('Content-Type','application/javascript')
+    response.statusCode = 200
+    response.setHeader('Content-Type','application/javascript;charset=utf-8')
     response.write(string)
     response.end()
-  }
-  else{
+  }else if(path === '/xxx') {
+    response.statusCode = 200
+    response.setHeader('Content-Type', 'text/json;charset=utf-8')
+    response.setHeader('Access-Control-Alow-Orign', 'http://frank1.com:8001')
+    response.write(`
+      {
+        "note": {
+          "to": "小谷",
+          "from": "方世玉",
+          "heading": "打招呼",
+          "content": "hi"
+        }
+      }
+    `)
+    response.end()
+  }else{
     response.statusCode = 404
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
-    response.write('呜呜呜')
+    response.write(`{
+      "error": "not found"
+    }`)
     response.end()
   }
 
