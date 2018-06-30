@@ -11,8 +11,7 @@ var result = `/*
 }
 
 html{
-    color: rgb(222,222,222);
-    background: rgb(0,43,54);
+  background: #dee;
 }
 
 #code{
@@ -22,10 +21,8 @@ html{
 
 /* 我需要一点代码高亮 */
 
-.token.selector{ color: rgb(133,153,0); }
-.token.property{ color: rgb(187,137,0); }
-.token.punctuation{ color: yellow; }
-.token.function{ color: rgb(42,161,152); }
+.token.selector{ color: #690; }
+.token.property{ color: #905; }
 
 /* 给边框加一个呼吸效果 */
 
@@ -159,7 +156,7 @@ function writeCss(prefix, code, fn) {
       window.clearInterval(id)
       fn && fn.call()
     }
-  }, 0)
+  }, 30)
 }
 
 function writeMarkdown(markdown, fn){
@@ -173,7 +170,7 @@ function writeMarkdown(markdown, fn){
       window.clearInterval(id)
       fn && fn.call()
     }
-  }, 0)
+  }, 10)
 }
 function createPaper(fn) {
    var paper = document.createElement('div') 
