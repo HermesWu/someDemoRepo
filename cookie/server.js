@@ -23,7 +23,7 @@ var server = http.createServer(function(request, response){
 
   if(path === '/'){
     let string = fs.readFileSync('./index.html','utf8')
-    let cookies = request.headers.cookie.split(';')
+    let cookies = request.headers.cookie.split('; ') // 这里有个空格很重要。。。。。
     let hash = {}
     for(let i = 0; i < cookies.length; i++) {
       let parts = cookies[i].split('=')
