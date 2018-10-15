@@ -1,0 +1,286 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+* {
+  box-sizing: border-box; }
+
+*::before {
+  box-sizing: border-box; }
+
+*::after {
+  box-sizing: border-box; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+input {
+  outline: none;
+  font: inherit; }
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  margin-right: 1.06667vw; }
+
+.icon-play {
+  width: 5.86667vw;
+  height: 5.86667vw;
+  vertical-align: middle;
+  fill: #AAA; }
+
+.icon-sq {
+  fill: #FE672E; }
+
+.logo {
+  width: 37.86667vw;
+  height: 6.66667vw; }
+
+body {
+  font: 14px/1.5 Helvetica,sans-serif;
+  color: #333; }
+
+.m-home {
+  height: 16.8vw; }
+
+.m-hometop {
+  background-color: #d43c33;
+  height: 17.06667vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.66667vw; }
+  .m-hometop a {
+    border: 1px solid #fff;
+    display: block;
+    height: 8vw;
+    line-height: 8vw;
+    padding: 0 2.66667vw;
+    font-size: 4vw;
+    font-weight: 400;
+    color: #fff;
+    border-radius: 4vw; }
+
+.m-site-nav {
+  padding-top: 10.66667vw; }
+  .m-site-nav .tabItems {
+    z-index: 1;
+    background: #fff;
+    display: flex;
+    position: fixed;
+    top: 16.8vw;
+    left: 0;
+    width: 100%;
+    height: 10.66667vw;
+    align-items: center; }
+    .m-site-nav .tabItems li {
+      flex: 1;
+      font-size: 4vw;
+      text-align: center;
+      border-bottom: 1px solid #ddd; }
+      .m-site-nav .tabItems li.active {
+        color: #d33a31; }
+        .m-site-nav .tabItems li.active span {
+          position: relative; }
+          .m-site-nav .tabItems li.active span:after {
+            position: absolute;
+            bottom: 0;
+            left: -2vw;
+            right: -2vw;
+            content: '';
+            display: block;
+            border: 1px solid #d33a31; }
+      .m-site-nav .tabItems li span {
+        display: inline-block;
+        line-height: 10.66667vw; }
+  .m-site-nav .m-main {
+    display: none;
+    padding-top: 5.33333vw; }
+    .m-site-nav .m-main .m-hot-songs .hot-title {
+      font-size: 4.53333vw;
+      font-weight: 400;
+      height: 5.33333vw;
+      padding: 0 2.4vw;
+      margin-bottom: 3.73333vw;
+      border-left: 2px solid #d33a31; }
+    .m-site-nav .m-main .m-hot-songs .hot-lists {
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: 5.33333vw; }
+      .m-site-nav .m-main .m-hot-songs .hot-lists li {
+        width: 33.33vw;
+        padding-right: 2px;
+        padding-bottom: 5.33333vw; }
+        .m-site-nav .m-main .m-hot-songs .hot-lists li img {
+          display: block;
+          width: 100%;
+          height: 33.33vw; }
+        .m-site-nav .m-main .m-hot-songs .hot-lists li p {
+          padding: 1.6vw 2px 0 1.6vw;
+          font-size: 3.46667vw;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2; }
+    .m-site-nav .m-main .m-new-songs .loading {
+      display: flex;
+      justify-content: center; }
+    .m-site-nav .m-main .m-new-songs .new-title {
+      font-size: 4.53333vw;
+      font-weight: 400;
+      height: 5.33333vw;
+      padding: 0 2.4vw;
+      margin-bottom: 3.73333vw;
+      border-left: 2px solid #d33a31; }
+    .m-site-nav .m-main .m-new-songs .m-new-lists {
+      padding-left: 2.66667vw; }
+      .m-site-nav .m-main .m-new-songs .m-new-lists li {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 14.66667vw;
+        padding: 1.6vw 0;
+        border-bottom: 1px solid #ddd; }
+        .m-site-nav .m-main .m-new-songs .m-new-lists li .right {
+          display: flex;
+          align-items: center;
+          padding: 0 2.66667vw; }
+        .m-site-nav .m-main .m-new-songs .m-new-lists li .title {
+          font-size: 3.73333vw;
+          font-weight: 400;
+          line-height: 6.66667vw;
+          color: #333; }
+          .m-site-nav .m-main .m-new-songs .m-new-lists li .title .text {
+            font-size: 3.2vw;
+            font-weight: 400;
+            line-height: 4.8vw;
+            color: #888; }
+        .m-site-nav .m-main .m-new-songs .m-new-lists li .singer {
+          font-size: 3.2vw;
+          font-weight: 400;
+          line-height: 4.8vw;
+          color: #888; }
+    .m-site-nav .m-main .m-footer {
+      position: relative;
+      padding-top: 53.3%;
+      margin-top: 4px;
+      background: transparent url(//i.loli.net/2017/08/25/599f862b9c98d.png) no-repeat center;
+      background-size: contain;
+      text-align: center; }
+      .m-site-nav .m-main .m-footer section {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center; }
+        .m-site-nav .m-main .m-footer section .logo1 {
+          padding-top: 16.9%; }
+          .m-site-nav .m-main .m-footer section .logo1 .logosvg {
+            display: block;
+            margin: 0 auto;
+            width: 61.33333vw;
+            height: 11.73333vw; }
+      .m-site-nav .m-main .m-footer section.art .link-wrapper {
+        line-height: 10.13333vw;
+        border: 1px solid #d33a31;
+        border-radius: 10.13333vw;
+        color: #d33a31;
+        margin: 4vw 9.86667vw 1.33333vw; }
+        .m-site-nav .m-main .m-footer section.art .link-wrapper a {
+          display: inline-block;
+          line-height: 10.66667vw;
+          font-size: 4.26667vw;
+          padding: 0 5.06667vw;
+          border-radius: 5.33333vw;
+          color: #D43C33; }
+      .m-site-nav .m-main .m-footer section.art .copyright {
+        font-size: 3.2vw;
+        color: #888;
+        transform: scale(0.75); }
+
+.m-main-hot {
+  display: none; }
+  .m-main-hot .m-title-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5.33333vw;
+    width: 100%;
+    height: 38.93333vw;
+    background: url("../asset/images/background.jpeg") no-repeat;
+    background-size: contain; }
+    .m-main-hot .m-title-img .m-hot-image {
+      width: 37.86667vw;
+      height: 17.86667vw;
+      background: url("../asset/images/hot-song.png") no-repeat;
+      background-size: 44.26667vw 25.86667vw;
+      background-position: -6.4vw -8vw; }
+    .m-main-hot .m-title-img .m-hot-content {
+      margin-top: 2.66667vw;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 3.2vw;
+      transform: scale(0.91);
+      transform-origin: left top; }
+
+.m-hot-lists .m-lists-item {
+  display: flex;
+  width: 100%;
+  padding-left: 2.66667vw;
+  height: 14.66667vw; }
+  .m-hot-lists .m-lists-item .list-num {
+    display: flex;
+    align-items: center;
+    width: 8vw;
+    color: #df3436;
+    font-size: 4.53333vw; }
+  .m-hot-lists .m-lists-item .list-content {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between; }
+    .m-hot-lists .m-lists-item .list-content .list-content-left {
+      padding: 1.6vw 0; }
+      .m-hot-lists .m-lists-item .list-content .list-content-left .list-content-title {
+        font-size: 4.53333vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        wor-break: normal; }
+      .m-hot-lists .m-lists-item .list-content .list-content-left .list-content-singer {
+        padding-left: 4.26667vw;
+        color: #888;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        wor-break: normal;
+        font-size: 3.2vw;
+        transform: scale(0.91);
+        transform-origin: left top; }
+    .m-hot-lists .m-lists-item .list-content .list-content-right {
+      line-height: 14.66667vw;
+      padding: 0 2.66667vw; }
+
+.page-3 {
+  display: none; }
+
+.page-1.active {
+  display: block; }
+
+.page-2.active {
+  display: block; }
+
+.page-3.active {
+  display: block; }

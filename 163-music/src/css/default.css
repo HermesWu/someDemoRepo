@@ -1,0 +1,148 @@
+*{ padding: 0; margin: 0; }
+*{ box-sizing: border-box }
+*::before{ box-sizing: border-box }
+*::after{ box-sizing: border-box }
+ul,ol{ list-style:none }
+a{ color: inherit; text-decoration: none }
+input{outline:none; font: inherit }
+body{
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.page{
+    display: flex;
+    height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+.bg{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: url('http://pegr14rv7.bkt.clouddn.com/wallhaven-684378-3-min.png') no-repeat;
+    background-size: cover;
+    filter: blur(1px);
+    opacity: .7;
+    z-index: -1;
+}
+.page > aside{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.page > aside > .newSong{
+    padding: 10px;
+    text-align: center;
+}
+.page > aside > .newSong.active{
+    background-color: #d4d4d4;
+}
+.page > aside > #songListContainer {
+    flex-grow: 1;
+    text-align: left;
+    border-top: 1px solid #999;
+}
+.page > aside > .uploadArea > .draggable > .clickable{
+    text-align: center;
+    padding: 10px;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    flex-direction: column;
+    cursor: pointer;
+}
+.page > aside > #songListContainer{
+    height: 100vh;
+    /*overflow: scroll;*/
+    overflow: hidden;
+    position: relative;
+
+}
+.page > aside > #songListContainer > .songList{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: -17px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+}
+.page > aside > #songListContainer > .songList > li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.page > aside > #songListContainer > .songList > li.active {
+    background-color: #d4d4d4;
+}
+.page > main{
+    overflow: hidden;
+    /*z-index: 10;*/
+    padding: 50px;
+    flex-grow: 1;
+    border: 1px solid #999;
+}
+.page > main > .editArea{
+    padding: 20px;
+}
+.page > main > .editArea > form{
+    font-size: 16px;
+}
+.page > main > .editArea > form > .row{
+    margin-bottom: 15px;
+
+}
+.page > main > .editArea > form > .row > button{
+    margin-left: 28px;
+    padding: 5px 7px;
+    border-radius: 6px;
+}
+.page > main > .editArea > form > .row > label{
+    font-weight: 700;
+    vertical-align: top;
+
+}
+.page > main > .editArea > form > .row > label > input{
+    padding: 3px 8px;
+    margin-left: 3px;
+    width: 180px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+@keyframes loading{
+    0%{transform: scale(1.0)}
+    100%{transform: scale(0.1)}
+
+}
+.site-loading{
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
+}
+.site-loading.active{
+    visibility: visible;
+}
+.site-loading:before{
+    position: absolute;
+    content: '';
+    background: #bbb;
+    display: block;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    border-radius: 50%;
+    animation: loading 1s infinite alternate-reverse;
+    transition-timing-function: linear;
+}
